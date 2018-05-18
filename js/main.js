@@ -101,9 +101,11 @@
          });
 
     var dataColors = {
-      'Existing': '#8dc63f',
-      'Planned': '#008192',
-      'In Progress': '#fdae61'
+      'Existing': '#7EB238',
+      'In Progress': '#fdae61',
+      'Pipeline': '#AF46A4',
+      'Planned': '#329aa7'
+     
     };
     
     function styles(feature) {
@@ -116,7 +118,7 @@
 
     data4 = new google.maps.Data();
     $.getJSON('https://dvrpc-dvrpcgis.opendata.arcgis.com/datasets/c830cdb70f654c36bfd88eb7ed4bc424_0.geojson', function(d) {
-    data4.addGeoJson(d, {idPropertyName: 'OBJECTID'});
+    data4.addGeoJson(d, {idPropertyName: 'OBJECTID_1'});
     data4.setStyle(styles);
     data4.setMap(map);
     });
@@ -143,37 +145,15 @@
       });   
     
       data4b.addListener('click', function(e) {
-          var content = '<b>Name: </b>'+e.feature.getProperty('NAME')+'<br>'
+          var content = '<b>Primary Trail Name: </b>'+e.feature.getProperty('MAIN_TRAIL')+'<br>'
+                   +'<b>Description: </b>'+e.feature.getProperty('NAME')+'<br>'
+                      +'<b>Length (mi): </b>'+ numeral(e.feature.getProperty('LENGTH')).format('0.00')+'<br>'
+                      //  numeral(props.TTCost).format('($0,0.0)')
                    +'<b>Trail Status: </b>'+e.feature.getProperty('CIRCUIT');
 
         $('#info-bar').html(content);
       }); 
-  
-      
-/* google.maps.event.addListener(map, 'zoom_changed', function()
-  { 
-    var zoomLevel = map.getZoom();
     
-    if(zoomLevel <=12)
-      data6.overrideStyle(strokeWeight:9);
-
-    // === If Zoom Level > 8 use mapStyleZoomedOut 
-    else
-      data6.overrideStyle(strokeWeight:3);
-
-  }); 
-    google.maps.event.addListener(map,'zoom_changed',function(){
-     data6.setStyle(function (feature) {
-            return {   
-                zIndex: 201,
-                strokeColor: '#008192',
-                clickable: true,
-                strokeWeight: map.getZoom()>14?5:3
-            };
-        });
-  }); */
-
-        
         $("#zoomToRegion").click(function(){
             map.setCenter(new google.maps.LatLng(40.08, -75.170669));
             map.setZoom(9);
@@ -247,4 +227,3 @@
         });
     }
         google.maps.event.addDomListener(window, 'load', initialize);
-
