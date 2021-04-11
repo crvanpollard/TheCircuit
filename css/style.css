@@ -209,6 +209,19 @@ hr {
     display: inline-block;
     text-align: left;
 }
+.info-bar2 {
+    position: absolute;
+    display: inline-block;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    padding: 10px;
+    width: 250px;
+    height: 300px;
+    border-style: solid;
+    border-color: #008192;
+    background-color: white;
+}
 #info-bar{
     position: absolute;
     display: inline-block;
@@ -223,3 +236,4 @@ hr {
     max-width: 400px;
     font-size: 1.10em;
 }
+

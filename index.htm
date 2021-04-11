@@ -62,66 +62,107 @@
     </div>
       
     <div class="row" id="container">
+        
         <div id="info-bar">
             <b>Information</b><em> (click trail)</em>
         </div>
-        <div class="col-sm-8 col-md-10 col-lg-10" id="map">
-    	    <div id='title'></div>	
-            <div id="loading" style="display: block;">
-                <div class="loading-indicator">
-                    <div class="progress progress-striped active">
-                        <div class="progress-bar progress-bar-info" style="width: 100%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-sm-4 col-md-2 col-lg-2" id="sidebar" style="padding: 10px; overflow: auto;">
-    		<div class="panel panel-primary">
-    			<div class="panel-heading" >
-    			   <span class="small text-muted" style="color:white"><strong>Data Layers</strong></span>
-                </div>	
-				<div id="overlay-layers" class="panel-collapse collapse in">
-	                <div class="panel-body" style="padding: 0px 15px;">  									  	
-	                  <!--   <h3 style="color:#8dc63f;">The Circuit</h3> -->
-                       <h3 style="color:#008192;">Trail Status</h3>
+
+        <div class="info-bar2">                          
+                       <h3 style="margin-top: -1px;color:#008192;">Trail Status</h3>
                         <div id="majorRoads" style="float: left">
                             <div class="checkbox">
                                 <label>
                                     <input id="Existing" type="checkbox"  onClick="toggleLayer('Existing','Existing')" checked>
-                                    <img src='img/existing2.png' width='40' height='8'> &nbsp;Existing
+                                    <img src='img/existing2.png' width='40' height='8'> &nbsp;Existing<br>
+                                    <p style='margin-left: 48px;'><i>Existentes</i></p>
                                 </label>
-                            </div>   	
+                            </div>      
                             <div class="checkbox">
                                 <label>
                                     <input id="InProgress" type="checkbox"  onClick="toggleLayer('In Progress','InProgress')" checked>
                                     <img src='img/inprogress.png' width='40' height='8'> &nbsp;In Progress
+                                    <br>
+                                    <p style='margin-left: 48px;'><i>En progreso</i></p>
                                 </label>
                             </div>  
                             <div class="checkbox">
                                 <label>
                                     <input id="Pipeline" type="checkbox"  onClick="toggleLayer('Pipeline','Pipeline')" checked>
                                     <img src='img/pipeline.png' width='40' height='8'> &nbsp;Pipeline
+                                    <br>
+                                    <p style='margin-left: 48px;'><i>A continuación</i></p>
+                                </label>
+                            </div>  
+                            <div class="checkbox">
+                                <label>
+                                    <input id="Planned" type="checkbox"  onClick="toggleLayer('Planned','Planned')" checked>
+                                    <img src='img/planned2.png' width='40' height='8'> &nbsp;Planned
+                                    <br>
+                                    <p style='margin-left: 48px;'><i>Planeados</i></p>
+                                </label>
+                            </div>   
+                        <p>For more information about The Circuit Trails visit: <a href="https://circuittrails.org" target="_new" >CircuitTrails.org </a></p>                       
+                     </div>
+        
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12" id="map"> </div>
+
+ <!--<div class="col-sm-4 col-md-2 col-lg-2" id="sidebar" style="padding: 10px; overflow: auto;">
+    		<div class="panel panel-primary">
+    			<div class="panel-heading" >
+    			   <span class="small text-muted" style="color:white"><strong>Data Layers</strong></span>
+                </div>	
+				<div id="overlay-layers" class="panel-collapse collapse in">
+	                <div class="panel-body" style="padding: 0px 15px;">  									  	
+	               
+                       <h3 style="color:#008192;">Trail Status</h3>
+                        <div id="majorRoads" style="float: left">
+                            <div class="checkbox">
+                                <label>
+                                    <input id="Existing" type="checkbox"  onClick="toggleLayer('Existing','Existing')" checked>
+                                    <img src='img/existing2.png' width='40' height='8'> &nbsp;Existing<br>
+                                    <p style='margin-left: 48px;'><i>Existentes</i></p>
+                                </label>
+                            </div>   	
+                            <div class="checkbox">
+                                <label>
+                                    <input id="InProgress" type="checkbox"  onClick="toggleLayer('In Progress','InProgress')" checked>
+                                    <img src='img/inprogress.png' width='40' height='8'> &nbsp;In Progress
+                                    <br>
+                                    <p style='margin-left: 48px;'><i>En progreso</i></p>
+                                </label>
+                            </div>  
+                            <div class="checkbox">
+                                <label>
+                                    <input id="Pipeline" type="checkbox"  onClick="toggleLayer('Pipeline','Pipeline')" checked>
+                                    <img src='img/pipeline.png' width='40' height='8'> &nbsp;Pipeline
+                                    <br>
+                                    <p style='margin-left: 48px;'><i>A continuación</i></p>
                                 </label>
                             </div> 	
                             <div class="checkbox">
                                 <label>
                                     <input id="Planned" type="checkbox"  onClick="toggleLayer('Planned','Planned')" checked>
                                     <img src='img/planned2.png' width='40' height='8'> &nbsp;Planned
+                                    <br>
+                                    <p style='margin-left: 48px;'><i>Planeados</i></p>
                                 </label>
                             </div>   
-                                             
+                        <p>For more information about The Circuit Trails visit: <a href="https://circuittrails.org" target="_new" >CircuitTrails.org </a></p>                       
                         </div>
+                      
     
-	            </div><!-- #overlay-layers .panel-collapse collapse in -->
-			</div><!-- .panel panel-primary -->
-                          
-        </div><!-- #Sidebar (Entire Sidebar) -->
-    </div><!-- #Container --> 
+	            </div>
+			</div>
+                       
+        </div>
 
+    </div>
+-->
      <!-- About Modal --> 
     <div class="modal fade" id="aboutModal">
-        <div class="modal-dialog" style="width:620px">
+        <div class="modal-dialog" style="width:710px">
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" style="color:white;">×</button>
@@ -140,6 +181,7 @@
                             <p>
                                 The Circuit is Greater Philadelphia’s multi–use trail network connecting people to jobs, communities, parks, and waterways. Governments, non-profits, and foundations have collaborated to complete over 300 miles of the envisioned 750-mile regional network. More miles are added to the network each year. Learn more at <a class="one" href="http://www.CircuitTrails.org/" target="_blank">CircuitTrails.org</a>  and connect with The Circuit Trails on <a class="one" href="https://www.facebook.com/TheCircuitTrails" target="_blank">Facebook </a><span class="icon icon-fbD"></span>, <a class="one" href="https://twitter.com/circuittrails" target="_blank">Twitter </a><span class="icon icon-twitterD"></span>  and <a class="one" href="https://www.instagram.com/thecircuittrails/" target="_blank">Instagram </a><span class="icon icon-instagramD"></span> to find out what is happening <span style="color:#8dc63f;font-weight: bold;font-size: 140%">#onthecircuit</span>.
                             </p>
+                            <p><i>El Circuito es el sistema de senderos de uso múltiple de la Gran Filadelfia conectando a la gente con trabajos, comunidades, parques, y ríos. Gobiernos, organizaciones sin fines de lucro y fundaciones han colaborado para completar más de 300 millas de la concebida red regional de 750 millas. Cada año se agregan más millas a la red. Aprenda más en  <a class="one" href="http://www.CircuitTrails.org/" target="_blank">CircuitTrails.org</a> y conectese a The Circuit Trails en <a class="one" href="https://www.facebook.com/TheCircuitTrails" target="_blank">Facebook</a><span class="icon icon-fbD"></span>, <a class="one" href="https://twitter.com/circuittrails" target="_blank"> Twitter </a><span class="icon icon-twitterD"></span> y  <a class="one" href="https://www.instagram.com/thecircuittrails/" target="_blank">Instagram </a><span class="icon icon-instagramD"></span> para enterarse de lo que anda pasando <span style="color:#8dc63f;font-weight: bold;font-size: 140%">#enelcircuito</span>.</i></p>
                             <hr>
                             <div class="media">
                                 <a class="pull-left" href="#">
@@ -147,6 +189,8 @@
                                 </a>
                                 <div class="media-body">
                                     <h5 style="margin-bottom: 0px;margin-top:2px;"><b>Existing -- </b>These trails are open for use so get out there and explore them!</h5>
+                                     <h5 style="margin-bottom:0px;margin-top:2px;font-style:italic;"><b>Existentes -- </b>Estos senderos están abiertos para su uso, ¡sal a explorarlos!</h5>
+                                   
                                 </div>
                             </div>
                             <div class="media">
@@ -155,6 +199,7 @@
                                 </a>
                                 <div class="media-body">
                                     <h5 style="margin-bottom: 0px"><b>In Progress -- </b>These trails are currently being designed or built.</h5>  
+                                     <h5 style="margin-bottom: 0px;margin-top:2px;font-style:italic;"><b>En progreso -- </b>Estos senderos se están diseñando o construyendo actualmente.</h5> 
                                 </div>
                             </div>
                               <div class="media">
@@ -163,6 +208,7 @@
                                 </a>
                                 <div class="media-body">
                                     <h5 style="margin-bottom: 0px"><b>Pipeline -- </b>DVRPC, local governments, and non-profit organizations are actively working to move these trails forward by conducting studies, acquiring rights-of-way, engaging local communities, and laying the groundwork to obtain funding for future design and construction.</h5>  
+                                     <h5 style="margin-bottom: 0px;margin-top:2px;font-style:italic;"><b>A continuación -- </b>La Comisión de Planificación Regional del Valle Delaware (DVRPC), gobiernos locales, y organizaciones sin fines de lucro están trabajando activamente para avanzar estos senderos. Están realizando estudios, adquiriendo vías de tránsito, dirigiéndose a comunidades locales, y financiando el futuro diseño y construcción.</h5> 
                                 </div>
                             </div>
                                <div class="media">
@@ -171,6 +217,7 @@
                                 </a>
                                 <div class="media-body">
                                     <h5 style="margin-bottom: 0px"><b>Planned -- </b>These trails are documented in local, county or regional plans.  They represent excellent opportunities for regional-scale, multi-use trails.  Studies or plans may have been prepared for these trails, but a sponsor is not actively working to move them forward.</h5>  
+                                    <h5 style="margin-bottom: 0px;margin-top:2px;font-style:italic;"><b>Planeados -- </b>Estos senderos están documentados en los planes de la localidad, condado, o región. Presentan excelentes oportunidades para senderos de múltiple uso y de escala regional. Es posible que ya hayan estudios o planes preparados para estos senderos, pero al momento, no tienen un promotor que esté trabajando para avanzarlos.</h5> 
                                 </div>
                             </div>
                         </div>
@@ -190,7 +237,8 @@
                         <div class="tab-pane fade" id="disclaimer">
                             <p style="color:#666666">
                                 This web page is a public resource of general information. The Delaware Valley Regional Planning Commission (DVRPC) makes no warranty, representation, or guarantee as to the content, sequence, accuracy, timeliness, or completeness of any of the spatial data or database information provided herein. DVRPC and partner state, local, and other agencies shall assume no liability for errors, omissions, or inaccuracies in the information provided regardless of how caused; or any decision made or action taken or not taken by any person relying on any information or data furnished within.
-                            </p>	
+                            </p>
+                            <p><i>Esta página web es un recurso público de información general. La Comisión de Planificación Regional del Valle Delaware (DVRPC) no expresa ninguna garantía, representación, o promesa con respecto al contenido, secuencia, precisión, actualización o completud de cualquiera de los datos espaciales o información de base de datos suministrados aquí. DVRPC y sus asociadas agencias estatales, locales, y otros socios no asumirán responsabilidad ninguna por errores, omisiones, o inexactitudes presentes en la información providenciada, independientemente de cómo se produjeron; o, por cualquiera decisión hecha o acción tomada o no tomada por cualquier persona que dependa de cualquier información o dato suministrado aquí</i></p>.	
                         </div>
                         
 					</div><!-- /#aboutTabsContent .tab-content -->
@@ -204,14 +252,14 @@
 
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvK54P-Pb3skEYDLFVoRnSTLtRyG5GJ6U"></script> 
-    <!--  <script src="https://maps.googleapis.com/maps/api/js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script> 
     <script type="text/javascript" src="js/keydragzoom.js"></script>  
     <script type="text/javascript" src="js/numeral.min.js"></script>   
     <script type="text/javascript" src="js/main.js"></script>
 
-    <script>var _gaq=[['_setAccount','UA-9825778-1'],['_trackPageview']];(function(d){var g=d.createElement('script'),s=d.scripts[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document))</script> 
+  <!--  <script>var _gaq=[['_setAccount','UA-9825778-1'],['_trackPageview']];(function(d){var g=d.createElement('script'),s=d.scripts[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document))</script> 
 
- <!--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbCFq-smLpXv9rmPXbHIgnv9V-xP3onkU&callback=initMap"
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbCFq-smLpXv9rmPXbHIgnv9V-xP3onkU&callback=initMap"
   type="text/javascript"></script> -->
 
   </body>
