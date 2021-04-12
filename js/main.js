@@ -2,8 +2,11 @@
   var MY_MAPTYPE_ID = 'Base Map';
   var streetViewService = new google.maps.StreetViewService();
   var geoJsonObject;
+  var markersArray = [];
   
   var region = new google.maps.LatLng(40.08, -75.170669);
+
+
       
    $(document).ready(function() {
       //OPEN ABOUT DIALOG
@@ -34,6 +37,36 @@
         }
         
     };  
+
+     function codeAddress() {
+    var address = document.getElementById("address").value;
+  var bounds  = new google.maps.LatLngBounds( 
+  new google.maps.LatLng( 39.867004,-75.280303 ),
+  new google.maps.LatLng( 40.137992,-74.955763 ));
+  
+    geocoder.geocode( { 'address':address,'bounds':bounds}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+    map.setZoom(14);
+        var marker = new google.maps.Marker({
+            map: map, 
+           position: results[0].geometry.location   
+       });
+      markersArray.push(marker);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+  // Deletes all markers in the array by removing references to them
+  function deleteOverlays() {
+    if (markersArray) {
+      for (i in markersArray) {
+        markersArray[i].setMap(null);
+      }
+      markersArray.length = 0;
+    }
+  }
         
   function initialize() {
   var stylez = [{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},
@@ -57,6 +90,7 @@
   {"featureType":"water","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"}]}
   ];
 
+  geocoder = new google.maps.Geocoder();
   // Create a simple map.
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 9,
@@ -85,12 +119,7 @@
         var jayzMapType = new google.maps.StyledMapType(stylez, styledMapOptions);
         map.mapTypes.set(MY_MAPTYPE_ID,jayzMapType);
  
-   //   var bikeLayer = new google.maps.BicyclingLayer();
-     //   bikeLayer.setMap(map);
-
-    //County Bndyhttps://arcgis.dvrpc.org/portal/rest/services/Boundaries/CountyBoundaries/FeatureServer/0/query?where=dvrpc_reg%3D%27Yes%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&gdbVersion=&historicMoment=&returnDistinctValues=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&multipatchOption=xyFootprint&resultOffset=&resultRecordCount=&returnTrueCurves=false&returnExceededLimitFeatures=false&quantizationParameters=&returnCentroid=false&sqlFormat=none&resultType=&featureEncoding=esriDefault&datumTransformation=&f=geojson
-    //    https://arcgis.dvrpc.org/portal/rest/services/Boundaries/CountyBoundaries/FeatureServer/0/query?where=dvrpc_reg%3D%27Yes%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&gdbVersion=&historicMoment=&returnDistinctValues=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&multipatchOption=xyFootprint&resultOffset=&resultRecordCount=&returnTrueCurves=false&returnExceededLimitFeatures=false&quantizationParameters=&returnCentroid=false&sqlFormat=none&resultType=&featureEncoding=esriDefault&datumTransformation=&f=geojson
-         $.getJSON('https://arcgis.dvrpc.org/portal/rest/services/Boundaries/CountyBoundaries/FeatureServer/0/query?where=dvrpc_reg%3D%27Yes%27&outFields=*&geometryPrecision=5&outSR=4326&f=geojson', function(d) {
+        $.getJSON('https://arcgis.dvrpc.org/portal/rest/services/Boundaries/CountyBoundaries/FeatureServer/0/query?where=dvrpc_reg%3D%27Yes%27&outFields=*&geometryPrecision=5&outSR=4326&f=geojson', function(d) {
             var data = new google.maps.Data({map: map, style:{
                 clickable: false,
                 zIndex:10,
@@ -100,6 +129,37 @@
                 strokeWeight: 3
                      }});
             data.addGeoJson(d);
+         });
+
+        /*  var addListenersOnPolygon = function(feature) {
+          google.maps.event.addListener(feature, 'click', function (event) {
+          alert(event.feature.getProperty("mun_name"));
+          });  
+          } 
+
+          var infowindow = new google.maps.InfoWindow();
+         var addListenersOnPolygon = function(feature) {   
+            google.maps.event.addListener(feature, 'click', function(event) {
+              let state = event.feature.getProperty("mun_name");
+              let html = 'MCD: ' + state; // combine state name with a label
+              infowindow.setContent(html); // show the html variable in the infowindow
+              infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
+              infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)}); // move the infowindow up slightly to the top of the marker icon
+              infowindow.open(map);
+            });
+          } */
+
+          $.getJSON('https://arcgis.dvrpc.org/portal/rest/services/Boundaries/MunicipalBoundaries/FeatureServer/0/query?where=dvrpc_reg%3D%27Yes%27&outFields=*&geometryPrecision=5&outSR=4326&f=geojson', function(d) {
+            var dataMCD = new google.maps.Data({map: map, style:{
+                clickable: false,
+                zIndex:1,
+                fillOpacity: .0,   
+                strokeColor: '#c0c0c0',
+                strokeOpacity: .55,
+                strokeWeight: 1.25
+                     }});
+            dataMCD.addGeoJson(d);
+          //  addListenersOnPolygon(dataMCD);
          });
 
     var dataColors = {

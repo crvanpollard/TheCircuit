@@ -22,6 +22,19 @@
     <![endif]-->
   
   </head>
+   <style>
+   
+      #info-box {
+        background-color: white;
+        border: 1px solid black;
+        bottom: 30px;
+        height: 20px;
+        padding: 10px;
+        position: absolute;
+        left: 30px;
+      }
+    
+    </style>
 
   <body>
 
@@ -56,6 +69,14 @@
                         <li id="zoomToStudy8"><a href="javascript:void(0);">&nbsp;&nbsp; Gloucester County</a></li>
                         <li id="zoomToStudy9"><a href="javascript:void(0);">&nbsp;&nbsp; Mercer County</a></li>
                     </ul>
+                </li>
+
+                <li>
+                    <div class="input-group search-container" style="margin: 5px 0px 0px 10px;" >
+                     <input id="address" type="text" placeholder="Enter a street address" class="form-control" style="width:200px;">
+                     <span class="input-group-addon"onclick="codeAddress()"><i class="glyphicon glyphicon-search"style="color:black;"></i></span>
+                     <span class="input-group-addon"onclick="deleteOverlays();"><i class="glyphicon glyphicon-ban-circle"style="color:black;"></i></span>
+                    </div>
                 </li>
             </ul>
         </div><!--/.navbar-collapse -->
@@ -223,15 +244,15 @@
                         </div>
 						<div class="tab-pane fade" id="contact">
 							<p>
-								<strong>Christopher Linn, AICP</strong>
+								<strong>Shawn Megill Legendre, AICP</strong>
 								<br/>
-									Manager 
+									Manager, Regional Trails Program  
 								<br/>
 									Office of Environmental Planning
 								<br/>
-									Phone: 215-238-2873
+									Phone: 215-238-2934
 								<br/>
-								<a class="one" href="mailto:clinn@dvrpc.org">clinn@dvrpc.org </a> 
+								<a class="one" href="mailto:slegendre@dvrpc.org">slegendre@dvrpc.org  </a> 
 							</p>					
 						</div>
                         <div class="tab-pane fade" id="disclaimer">
@@ -251,8 +272,8 @@
     <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!--  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvK54P-Pb3skEYDLFVoRnSTLtRyG5GJ6U"></script>  -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script> 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvK54P-Pb3skEYDLFVoRnSTLtRyG5GJ6U"></script>  
+  <!--  <script src="https://maps.googleapis.com/maps/api/js"></script>  -->
     <script type="text/javascript" src="js/keydragzoom.js"></script>  
     <script type="text/javascript" src="js/numeral.min.js"></script>   
     <script type="text/javascript" src="js/main.js"></script>
